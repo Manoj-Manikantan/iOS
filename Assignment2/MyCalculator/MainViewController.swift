@@ -13,9 +13,10 @@ class MainViewController: UIViewController
     @IBOutlet weak var ResultLabel: UILabel!
     
     var onScreenNumberValue: Double = 0;
-    var firstValue: Double = 0;
+    var firstOperatorValue: Double = 0;
     var mathOperatorPerformed: Bool = false;
     var mathOperator: String = "";
+    var finalResult: String = "";
     
     override func viewDidLoad()
     {
@@ -29,7 +30,7 @@ class MainViewController: UIViewController
         {
             case "C":
                 ResultLabel.text! = "0"
-                firstValue = 0;
+                firstOperatorValue = 0;
                 mathOperatorPerformed = false
             case "E":
                 ResultLabel.text!.popLast()
@@ -46,40 +47,45 @@ class MainViewController: UIViewController
                 print("some text")
             case "+":
                 mathOperatorPerformed = true
-                if(firstValue != 0)
+                mathOperator = "+"
+                if(firstOperatorValue != 0)
                 {
-                    mathOperator = "+"
-                    firstValue = calculateResult(firstVal: firstValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
                 }
             case "-":
                 mathOperatorPerformed = true
-                if(firstValue != 0)
+                mathOperator = "-"
+                if(firstOperatorValue != 0)
                 {
-                    mathOperator = "-"
-                    firstValue = calculateResult(firstVal: firstValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
                 }
             case "/":
                 mathOperatorPerformed = true
-                if(firstValue != 0)
+                mathOperator = "/"
+                if(firstOperatorValue != 0)
                 {
-                    mathOperator = "/"
-                    firstValue = calculateResult(firstVal: firstValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
                 }
             case "x":
                 mathOperatorPerformed = true
-                if(firstValue != 0)
+                mathOperator = "x"
+                if(firstOperatorValue != 0)
                 {
-                    mathOperator = "x"
-                    firstValue = calculateResult(firstVal: firstValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
                 }
             case "%":
                 ResultLabel.text! = String(onScreenNumberValue/100)
+                onScreenNumberValue = ((ResultLabel.text)! as NSString).doubleValue
             case "=":
-                 firstValue = calculateResult(firstVal: firstValue, secondVal: onScreenNumberValue, operandType: mathOperator)
-                 ResultLabel.text! = String(firstValue)
-                mathOperatorPerformed = true
+                 print(firstOperatorValue)
+                 print(onScreenNumberValue)
+                 print(mathOperator)
+                 finalResult = String(calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator))
+                 ResultLabel.text! = finalResult
+                 onScreenNumberValue = ((ResultLabel.text)! as NSString).doubleValue
+                 firstOperatorValue = 0
             default:
-                if(ResultLabel.text == "0")
+                if (ResultLabel.text == "0")
                 {
                     ResultLabel.text! = sender.titleLabel!.text!
                 }
@@ -92,9 +98,9 @@ class MainViewController: UIViewController
                     }
                     else
                     {
-                        if (firstValue == 0)
+                        if (firstOperatorValue == 0)
                         {
-                            firstValue = onScreenNumberValue
+                            firstOperatorValue = onScreenNumberValue
                         }
                         ResultLabel.text! = sender.titleLabel!.text!
                         onScreenNumberValue = ((ResultLabel.text)! as NSString).doubleValue
