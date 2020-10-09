@@ -1,10 +1,16 @@
-//
+//  Project Name : MyCalculator
+//  File Name : MainViewController.swift
+//  Author's Name : Manoj Manikantan Muralidharan
+//  Student ID : 301067347
+//  Date : 9th Oct 2020
+//  Description : Functioning of Basic Calculator Functions
+//  Version : V1.0
+
+
 //  MainViewController.swift
 //  MyCalculator
-//
 //  Created by Manoj on 2020-10-07.
 //  Copyright © 2020 Manoj. All rights reserved.
-//
 
 import UIKit
 
@@ -12,10 +18,10 @@ class MainViewController: UIViewController
 {
     @IBOutlet weak var ResultLabel: UILabel!
     
-    var currentNumberValue: Double = 0;
-    var firstOperatorValue: Double = 0;
-    var mathOperationPerformed: Bool = false;
-    var mathOperator: String = "";
+    var currentNumberValue: Double = 0; /* To store user input values */
+    var firstOperatorValue: Double = 0; /* To hold the first set of values (e.x) 1(operator1 value always) + 2 */
+    var mathOperationPerformed: Bool = false; /* Returns true whenever math operator is pressed */
+    var mathOperator: String = ""; /* To store math operators */
     var finalResult: String = "";
     
     override func viewDidLoad()
@@ -96,7 +102,7 @@ class MainViewController: UIViewController
                 if((ResultLabel.text! != "0") && (ResultLabel.text! != "") && (ResultLabel.text! != String(currentNumberValue)))
                 {
                     finalResult = String(calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator))
-                    if(finalResult.suffix(2) == ".0")
+                    if(finalResult.suffix(2) == ".0") /* Since my output is stored in double data type, eliminating last two digits if its a whole number */
                     {
                         ResultLabel.text! = String(finalResult.prefix(finalResult.count-2))
                     }
@@ -137,6 +143,7 @@ class MainViewController: UIViewController
         }
     }
     
+    /* Calculates the value of operator 1, operator 2 with any operation type and returns the value as double */
     func calculateResult(firstVal: Double, secondVal: Double, operandType: String) -> Double
     {
         if (operandType == "+")
