@@ -30,13 +30,18 @@ class MainViewController: UIViewController
         {
             case "C":
                 ResultLabel.text! = "0"
-                firstOperatorValue = 0;
+                firstOperatorValue = 0
+                currentNumberValue = 0
                 mathOperationPerformed = false
             case "E":
                 ResultLabel.text!.popLast()
                 if(ResultLabel.text!.count < 1)
                 {
                     ResultLabel.text! = "0"
+                }
+                else
+                {
+                    currentNumberValue = Double(ResultLabel.text!)!
                 }
             case ".":
                 if(!ResultLabel.text!.contains("."))
@@ -57,41 +62,48 @@ class MainViewController: UIViewController
                     currentNumberValue = Double(ResultLabel.text!)!
                 }
             case "+":
+                if(firstOperatorValue != 0)
+                {
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
+                }
                 mathOperationPerformed = true
                 mathOperator = "+"
+            case "-":
                 if(firstOperatorValue != 0)
                 {
                     firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
                 }
-            case "-":
                 mathOperationPerformed = true
                 mathOperator = "-"
+            case "/":
                 if(firstOperatorValue != 0)
                 {
                     firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
                 }
-            case "/":
                 mathOperationPerformed = true
                 mathOperator = "/"
+            case "x":
                 if(firstOperatorValue != 0)
                 {
                     firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
                 }
-            case "x":
                 mathOperationPerformed = true
                 mathOperator = "x"
-                if(firstOperatorValue != 0)
-                {
-                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
-                }
             case "%":
                 ResultLabel.text! = String(currentNumberValue/100)
                 currentNumberValue = Double(ResultLabel.text!)!
             case "=":
-                if(firstOperatorValue != 0)
+                if((ResultLabel.text! != "0") && (ResultLabel.text! != "") && (ResultLabel.text! != String(currentNumberValue)))
                 {
                     finalResult = String(calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator))
-                    ResultLabel.text! = finalResult
+                    if(finalResult.suffix(2) == ".0")
+                    {
+                        ResultLabel.text! = String(finalResult.prefix(finalResult.count-2))
+                    }
+                    else
+                    {
+                        ResultLabel.text! = finalResult
+                    }
                     currentNumberValue = Double(ResultLabel.text!)!
                     firstOperatorValue = 0
                 }
@@ -99,10 +111,14 @@ class MainViewController: UIViewController
                 if (ResultLabel.text == "0")
                 {
                     ResultLabel.text! = sender.titleLabel!.text!
+                    if (currentNumberValue == 0)
+                    {
+                        currentNumberValue = Double(ResultLabel.text!)!
+                    }
                 }
                 else
                 {
-                    if (mathOperationPerformed != true)
+                    if (mathOperationPerformed == false)
                     {
                         ResultLabel.text! += sender.titleLabel!.text!
                         currentNumberValue = Double(ResultLabel.text!)!
@@ -139,4 +155,5 @@ class MainViewController: UIViewController
             return (0)
         }
     }
+    
 }
