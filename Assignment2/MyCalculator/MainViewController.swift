@@ -12,9 +12,9 @@ class MainViewController: UIViewController
 {
     @IBOutlet weak var ResultLabel: UILabel!
     
-    var onScreenNumberValue: Double = 0;
+    var currentNumberValue: Double = 0;
     var firstOperatorValue: Double = 0;
-    var mathOperatorPerformed: Bool = false;
+    var mathOperationPerformed: Bool = false;
     var mathOperator: String = "";
     var finalResult: String = "";
     
@@ -31,7 +31,7 @@ class MainViewController: UIViewController
             case "C":
                 ResultLabel.text! = "0"
                 firstOperatorValue = 0;
-                mathOperatorPerformed = false
+                mathOperationPerformed = false
             case "E":
                 ResultLabel.text!.popLast()
                 if(ResultLabel.text!.count < 1)
@@ -44,46 +44,57 @@ class MainViewController: UIViewController
                     ResultLabel.text! += "."
                 }
             case "+/-":
-                print("some text")
+                if((ResultLabel.text! != "0") && (ResultLabel.text! != ""))
+                {
+                    if(Int(ResultLabel.text!)! > 0)
+                    {
+                        ResultLabel.text! = "-" + ResultLabel.text!
+                    }
+                    else
+                    {
+                        ResultLabel.text! = String(abs(Int(ResultLabel.text!)!))
+                    }
+                    currentNumberValue = Double(ResultLabel.text!)!
+                }
             case "+":
-                mathOperatorPerformed = true
+                mathOperationPerformed = true
                 mathOperator = "+"
                 if(firstOperatorValue != 0)
                 {
-                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
                 }
             case "-":
-                mathOperatorPerformed = true
+                mathOperationPerformed = true
                 mathOperator = "-"
                 if(firstOperatorValue != 0)
                 {
-                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
                 }
             case "/":
-                mathOperatorPerformed = true
+                mathOperationPerformed = true
                 mathOperator = "/"
                 if(firstOperatorValue != 0)
                 {
-                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
                 }
             case "x":
-                mathOperatorPerformed = true
+                mathOperationPerformed = true
                 mathOperator = "x"
                 if(firstOperatorValue != 0)
                 {
-                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator)
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
                 }
             case "%":
-                ResultLabel.text! = String(onScreenNumberValue/100)
-                onScreenNumberValue = ((ResultLabel.text)! as NSString).doubleValue
+                ResultLabel.text! = String(currentNumberValue/100)
+                currentNumberValue = Double(ResultLabel.text!)!
             case "=":
-                 print(firstOperatorValue)
-                 print(onScreenNumberValue)
-                 print(mathOperator)
-                 finalResult = String(calculateResult(firstVal: firstOperatorValue, secondVal: onScreenNumberValue, operandType: mathOperator))
-                 ResultLabel.text! = finalResult
-                 onScreenNumberValue = ((ResultLabel.text)! as NSString).doubleValue
-                 firstOperatorValue = 0
+                if(firstOperatorValue != 0)
+                {
+                    finalResult = String(calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator))
+                    ResultLabel.text! = finalResult
+                    currentNumberValue = Double(ResultLabel.text!)!
+                    firstOperatorValue = 0
+                }
             default:
                 if (ResultLabel.text == "0")
                 {
@@ -91,20 +102,20 @@ class MainViewController: UIViewController
                 }
                 else
                 {
-                    if (mathOperatorPerformed != true)
+                    if (mathOperationPerformed != true)
                     {
                         ResultLabel.text! += sender.titleLabel!.text!
-                        onScreenNumberValue = ((ResultLabel.text)! as NSString).doubleValue
+                        currentNumberValue = Double(ResultLabel.text!)!
                     }
                     else
                     {
                         if (firstOperatorValue == 0)
                         {
-                            firstOperatorValue = onScreenNumberValue
+                            firstOperatorValue = currentNumberValue
                         }
                         ResultLabel.text! = sender.titleLabel!.text!
-                        onScreenNumberValue = ((ResultLabel.text)! as NSString).doubleValue
-                        mathOperatorPerformed = false
+                        currentNumberValue = Double(ResultLabel.text!)!
+                        mathOperationPerformed = false
                     }
                 }
         }
