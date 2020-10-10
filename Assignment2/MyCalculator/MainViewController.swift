@@ -40,7 +40,7 @@ class MainViewController: UIViewController
                 currentNumberValue = 0
                 mathOperationPerformed = false
             case "E":
-                ResultLabel.text!.popLast()
+                _ = ResultLabel.text!.popLast()
                 if(ResultLabel.text!.count < 1)
                 {
                     ResultLabel.text! = "0"
@@ -99,7 +99,7 @@ class MainViewController: UIViewController
                 ResultLabel.text! = String(currentNumberValue/100)
                 currentNumberValue = Double(ResultLabel.text!)!
             case "=":
-                if((ResultLabel.text! != "0") && (ResultLabel.text! != "") && (ResultLabel.text! != String(currentNumberValue)))
+                if((ResultLabel.text! != "0") && (ResultLabel.text! != "") && (ResultLabel.text! != finalResult))
                 {
                     finalResult = String(calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator))
                     if(finalResult.suffix(2) == ".0") /* Since my output is stored in double data type, eliminating last two digits if its a whole number */
@@ -110,8 +110,11 @@ class MainViewController: UIViewController
                     {
                         ResultLabel.text! = finalResult
                     }
+                    finalResult = ResultLabel.text!
                     currentNumberValue = Double(ResultLabel.text!)!
                     firstOperatorValue = 0
+                    print(ResultLabel.text!)
+                    print(finalResult)
                 }
             default:
                 if (ResultLabel.text == "0")
