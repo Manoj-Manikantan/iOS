@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KAu-yh-r7h">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="aAt-6U-66Q">
+            <objects>
+                <viewController id="KAu-yh-r7h" customClass="MainViewController" customModule="MyCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hTZ-g6-5vG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FTE-bp-qRB">
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RT1-JA-py8" userLabel="1">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="121.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzf-PX-9FT">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="121.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-AN-Hgh" userLabel="2">
+                                        <rect key="frame" x="0.0" y="131.5" width="374" height="121"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-ce-gaT">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="47" id="0jx-Kg-691">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Vba-Lp-E9D">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="60"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="b6K-2i-o1Z">
+                                                        <variation key="heightClass=regular-widthClass=compact" constant="44"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                <state key="normal" title="+/-">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="0jx-Kg-691"/>
+                                                        <exclude reference="Vba-Lp-E9D"/>
+                                                        <exclude reference="b6K-2i-o1Z"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="0jx-Kg-691"/>
+                                                        <include reference="Vba-Lp-E9D"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="b6K-2i-o1Z"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="Wmn-D4-Icj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knw-DZ-qaC">
+                                                <rect key="frame" x="96" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="Ewt-Wm-rUi"/>
+                                                    <constraint firstAttribute="width" constant="30" id="P3X-pT-yz4">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="60"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                <state key="normal" title="%">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Ewt-Wm-rUi"/>
+                                                        <exclude reference="P3X-pT-yz4"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="Ewt-Wm-rUi"/>
+                                                        <include reference="P3X-pT-yz4"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="gjO-eJ-Urg"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3i4-V0-2zk">
+                                                <rect key="frame" x="192" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="19" id="kzT-JL-G6M">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="60"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="25" id="w6B-fG-ozd"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                                <state key="normal" title="E" image="baseline_backspace_white_18dp">
+                                                    <color key="titleColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="kzT-JL-G6M"/>
+                                                        <exclude reference="w6B-fG-ozd"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="kzT-JL-G6M"/>
+                                                        <include reference="w6B-fG-ozd"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="NTV-73-h2h"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYK-eU-7RR">
+                                                <rect key="frame" x="288" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="kIw-lo-nkZ"/>
+                                                    <constraint firstAttribute="width" constant="30" id="qle-EF-Pwf">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="60"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                                <state key="normal" title="=">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="kIw-lo-nkZ"/>
+                                                        <exclude reference="qle-EF-Pwf"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="kIw-lo-nkZ"/>
+                                                        <include reference="qle-EF-Pwf"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="eSA-2J-vm5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BX3-m1-cSM" userLabel="3">
+                                        <rect key="frame" x="0.0" y="262.5" width="374" height="121.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSI-fe-tJq">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="39" id="K2Y-VO-eNY">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="v6e-MZ-O36"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="K2Y-VO-eNY"/>
+                                                        <exclude reference="v6e-MZ-O36"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="K2Y-VO-eNY"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="v6e-MZ-O36"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="kZ6-D8-Jmi"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTr-79-fh7">
+                                                <rect key="frame" x="96" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="6io-vK-xe1"/>
+                                                    <constraint firstAttribute="height" constant="39" id="HqG-AK-gQP">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                <state key="normal" title="-">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="6io-vK-xe1"/>
+                                                        <exclude reference="HqG-AK-gQP"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="HqG-AK-gQP"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="6io-vK-xe1"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="tHZ-eh-gOV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4W-m5-AyH">
+                                                <rect key="frame" x="192" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="HNZ-7x-4dd">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="60"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="39" id="Z39-bL-QdB">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                <state key="normal" title="/">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="HNZ-7x-4dd"/>
+                                                        <exclude reference="Z39-bL-QdB"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="HNZ-7x-4dd"/>
+                                                        <include reference="Z39-bL-QdB"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="DTG-3e-0wV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwK-cG-mxn">
+                                                <rect key="frame" x="288" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1333333333" green="0.40000000000000002" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="39" id="Zc0-73-68R">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="25"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                <state key="normal" title="x">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Zc0-73-68R"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="Zc0-73-68R"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="xjU-5i-Cuk"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2he-Qz-4zn" userLabel="4">
+                                        <rect key="frame" x="0.0" y="394" width="374" height="121.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5B-PO-V5n">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.11764705882352941" green="0.98039215686274506" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="Hmj-Zh-pYr">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="1">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Hmj-Zh-pYr"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="Hmj-Zh-pYr"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="EfR-u3-aje"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGs-Nt-vkX">
+                                                <rect key="frame" x="96" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="aWl-EM-W9K">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="27" id="c4j-5h-3kX">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="aWl-EM-W9K"/>
+                                                        <exclude reference="c4j-5h-3kX"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="aWl-EM-W9K"/>
+                                                        <include reference="c4j-5h-3kX"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="7Ee-mB-lIt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L44-1t-zMI">
+                                                <rect key="frame" x="192" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="0HO-q2-czy">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="27" id="7KV-YZ-qJr">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="3">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="0HO-q2-czy"/>
+                                                        <exclude reference="7KV-YZ-qJr"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="0HO-q2-czy"/>
+                                                        <include reference="7KV-YZ-qJr"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="hqa-gc-eg0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIm-kd-5xA">
+                                                <rect key="frame" x="288" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="Awh-Ot-Ani">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="30" id="e14-iu-gF2">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="4">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Awh-Ot-Ani"/>
+                                                        <exclude reference="e14-iu-gF2"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="Awh-Ot-Ani"/>
+                                                        <include reference="e14-iu-gF2"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="aVs-JV-vdf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uys-08-3Ed" userLabel="5">
+                                        <rect key="frame" x="0.0" y="525.5" width="374" height="121"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTq-C8-CTf">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="uA8-rE-5BC">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="30"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="5">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="uA8-rE-5BC"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="uA8-rE-5BC"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="nFd-pi-OiU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0O-ao-22x">
+                                                <rect key="frame" x="96" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="ahR-68-p1D">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="30" id="hlb-ga-Gj5">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="6">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="ahR-68-p1D"/>
+                                                        <exclude reference="hlb-ga-Gj5"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="ahR-68-p1D"/>
+                                                        <include reference="hlb-ga-Gj5"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="rqu-cY-6Vn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct6-Xe-gTg">
+                                                <rect key="frame" x="192" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="eu4-Wa-H9R">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="68" id="umq-KD-0wF">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="7">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="eu4-Wa-H9R"/>
+                                                        <exclude reference="umq-KD-0wF"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="eu4-Wa-H9R"/>
+                                                        <include reference="umq-KD-0wF"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="pXU-dT-c7i"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-xc-rqp">
+                                                <rect key="frame" x="288" y="0.0" width="86" height="121"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="4jj-mb-9EG">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="68" id="M5Y-Mp-bIH">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="8">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="4jj-mb-9EG"/>
+                                                        <exclude reference="M5Y-Mp-bIH"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="4jj-mb-9EG"/>
+                                                        <include reference="M5Y-Mp-bIH"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="rOQ-Xs-PET"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KCW-EB-LHY" userLabel="6">
+                                        <rect key="frame" x="0.0" y="656.5" width="374" height="121.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmU-Kb-4VS">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="33" id="HTn-Ri-4AF">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="9">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="HTn-Ri-4AF"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="HTn-Ri-4AF"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="HQP-gS-HHe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTg-uu-lJ0">
+                                                <rect key="frame" x="96" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="Q2p-XG-Ocv">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="33" id="mM2-XZ-FTv">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="0">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Q2p-XG-Ocv"/>
+                                                        <exclude reference="mM2-XZ-FTv"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="Q2p-XG-Ocv"/>
+                                                        <include reference="mM2-XZ-FTv"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="M6H-t0-Krp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3y-Z9-6ou">
+                                                <rect key="frame" x="192" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="Rlr-Zr-RVn">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="33" id="XBs-U7-MNo">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title=".">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Rlr-Zr-RVn"/>
+                                                        <exclude reference="XBs-U7-MNo"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="Rlr-Zr-RVn"/>
+                                                        <include reference="XBs-U7-MNo"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="ztc-h6-kLZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOJ-Db-Zze">
+                                                <rect key="frame" x="288" y="0.0" width="86" height="121.5"/>
+                                                <color key="backgroundColor" red="0.1176470588" green="0.98039215690000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="3Og-e5-fKr">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="33" id="TPa-HK-BpU">
+                                                        <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="C">
+                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="3Og-e5-fKr"/>
+                                                        <exclude reference="TPa-HK-BpU"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <mask key="constraints">
+                                                        <include reference="3Og-e5-fKr"/>
+                                                        <include reference="TPa-HK-BpU"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="OnButton_Press:" destination="KAu-yh-r7h" eventType="touchUpInside" id="hBA-oM-Ekk"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FTE-bp-qRB" firstAttribute="top" secondItem="KdK-48-vqU" secondAttribute="top" constant="20" id="1mX-UL-CNX"/>
+                            <constraint firstItem="KdK-48-vqU" firstAttribute="trailing" secondItem="FTE-bp-qRB" secondAttribute="trailing" constant="20" id="BTz-Dm-IuI"/>
+                            <constraint firstItem="FTE-bp-qRB" firstAttribute="leading" secondItem="KdK-48-vqU" secondAttribute="leading" constant="20" id="G0N-wu-hYd"/>
+                            <constraint firstItem="KdK-48-vqU" firstAttribute="bottom" secondItem="FTE-bp-qRB" secondAttribute="bottom" constant="20" id="fQd-ug-008"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KdK-48-vqU"/>
+                    </view>
+                    <connections>
+                        <outlet property="ResultLabel" destination="Lzf-PX-9FT" id="gho-Cg-fLd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWv-5P-uKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2423" y="-1188"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="baseline_backspace_white_18dp" width="18" height="18"/>
+    </resources>
+</document>
