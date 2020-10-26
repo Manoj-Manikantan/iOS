@@ -60,6 +60,7 @@ class MainViewController: UIViewController
                 displayResult(outputVal: finalResult)
             }
         case "Rand":
+            /*  Reference for random number provided below https://stackoverflow.com/questions/24007129/how-does-one-generate-a-random-number-in-apples-swift-language */
             randomDouble = Double.random(in: 0.21828...9.14159)
             ResultLabel.text! = String(randomDouble)
             if (firstOperatorValue == 0)
