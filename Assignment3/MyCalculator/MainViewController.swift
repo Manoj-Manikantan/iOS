@@ -2,14 +2,15 @@
 //  File Name : MainViewController.swift
 //  Author's Name : Manoj Manikantan Muralidharan
 //  Student ID : 301067347
-//  Date : 9th Oct 2020
-//  Description : Functioning of Basic Calculator Functions
+//  Date : 25th Oct 2020
+//  Assignment No 3
+//  Description : Implementation of landscape orientation and additional functions
 //  Version : V1.0
 
 
 //  MainViewController.swift
 //  MyCalculator
-//  Created by Manoj on 2020-10-07.
+//  Created by Manoj on 2020-10-25.
 //  Copyright © 2020 Manoj. All rights reserved.
 
 import UIKit
@@ -27,7 +28,6 @@ class MainViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
     }
     
     @IBAction func OnButton_Press(_ sender: UIButton)
