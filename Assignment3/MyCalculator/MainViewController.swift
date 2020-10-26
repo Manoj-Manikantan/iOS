@@ -40,20 +40,30 @@ class MainViewController: UIViewController
                 {
                     currentNumberValue = Double(ResultLabel.text!)!
                     finalResult = String(currentNumberValue.squareRoot())
-                    if(finalResult.suffix(2) == ".0")
-                    {
-                        ResultLabel.text! = String(finalResult.prefix(finalResult.count-2))
-                    }
-                    else
-                    {
-                        ResultLabel.text! = finalResult
-                    }
+                    displayResult(outputVal: finalResult)
                 }
             case "Rand":
                 randomDouble = Double.random(in: 0.21828...9.14159)
                 ResultLabel.text! = String(randomDouble)
+                if (firstOperatorValue == 0)
+                {
+                    firstOperatorValue = currentNumberValue
+                }
+                currentNumberValue = Double(ResultLabel.text!)!
             case "𝝅":
-                print("Pi clicked")
+                ResultLabel.text! = String(Double.pi)
+                if (firstOperatorValue == 0)
+                {
+                    firstOperatorValue = currentNumberValue
+                }
+                currentNumberValue = Double(ResultLabel.text!)!
+            case "x^2":
+                if((ResultLabel.text! != "0") && (ResultLabel.text! != ""))
+                {
+                    currentNumberValue = Double(ResultLabel.text!)!
+                    finalResult = String(currentNumberValue * 2)
+                    displayResult(outputVal: finalResult)
+                }
             case "C":
                 ResultLabel.text! = "0"
                 firstOperatorValue = 0
@@ -122,16 +132,8 @@ class MainViewController: UIViewController
                 if((ResultLabel.text! != "0") && (ResultLabel.text! != "") && (ResultLabel.text! != finalResult))
                 {
                     finalResult = String(calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator))
-                    if(finalResult.suffix(2) == ".0") /* Since my output is stored in double data type, eliminating last two digits if its a whole number */
-                    {
-                        ResultLabel.text! = String(finalResult.prefix(finalResult.count-2))
-                    }
-                    else
-                    {
-                        ResultLabel.text! = finalResult
-                    }
+                    displayResult(outputVal: finalResult)
                     finalResult = ResultLabel.text!
-                    currentNumberValue = Double(ResultLabel.text!)!
                     firstOperatorValue = 0
                 }
             default:
@@ -161,6 +163,8 @@ class MainViewController: UIViewController
                         mathOperationPerformed = false
                     }
                 }
+                print(currentNumberValue)
+                print(mathOperator)
         }
     }
     
@@ -184,4 +188,17 @@ class MainViewController: UIViewController
         }
     }
     
+    /* Since my output is stored in double data type, eliminating last two digits if its a whole number and displaying the final output in result label */
+    func displayResult(outputVal: String)
+    {
+        if(outputVal.suffix(2) == ".0")
+        {
+            ResultLabel.text! = String(outputVal.prefix(outputVal.count-2))
+        }
+        else
+        {
+            ResultLabel.text! = outputVal
+        }
+        currentNumberValue = Double(ResultLabel.text!)!
+    }
 }
