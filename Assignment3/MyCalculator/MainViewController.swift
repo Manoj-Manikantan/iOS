@@ -61,9 +61,16 @@ class MainViewController: UIViewController
                 if((ResultLabel.text! != "0") && (ResultLabel.text! != ""))
                 {
                     currentNumberValue = Double(ResultLabel.text!)!
-                    finalResult = String(currentNumberValue * 2)
+                    finalResult = String(currentNumberValue * currentNumberValue)
                     displayResult(outputVal: finalResult)
                 }
+            case "x^y":
+                if(firstOperatorValue != 0)
+                {
+                    firstOperatorValue = calculateResult(firstVal: firstOperatorValue, secondVal: currentNumberValue, operandType: mathOperator)
+                }
+                mathOperationPerformed = true
+                mathOperator = "^"
             case "C":
                 ResultLabel.text! = "0"
                 firstOperatorValue = 0
@@ -183,6 +190,8 @@ class MainViewController: UIViewController
         } else if(operandType == "x")
         {
             return(firstVal * secondVal)
+        } else if(operandType == "^"){
+            return(pow(firstVal, secondVal))
         } else {
             return (0)
         }
