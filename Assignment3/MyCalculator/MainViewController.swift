@@ -6,8 +6,6 @@
 //  Assignment No 3
 //  Description : Implementation of landscape orientation and additional functions
 //  Version : V1.0
-
-
 //  MainViewController.swift
 //  MyCalculator
 //  Created by Manoj on 2020-10-25.
@@ -49,6 +47,7 @@ class MainViewController: UIViewController
         }
     }
     
+    /* Handling all the button functions here using a switch statement */
     @IBAction func OnButton_Press(_ sender: UIButton)
     {
         switch sender.titleLabel!.text!
@@ -188,8 +187,6 @@ class MainViewController: UIViewController
                     mathOperationPerformed = false
                 }
             }
-            print(currentNumberValue)
-            print(mathOperator)
         }
     }
     
