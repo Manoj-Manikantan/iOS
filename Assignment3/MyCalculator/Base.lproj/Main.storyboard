@@ -349,8 +349,8 @@
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="lK9-ND-SvS"/>
                                                         <exclude reference="c5a-Ck-5WA"/>
+                                                        <exclude reference="lK9-ND-SvS"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=regular">
@@ -384,14 +384,14 @@
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="o9W-hc-AP5"/>
                                                         <exclude reference="Y4A-uy-1GO"/>
+                                                        <exclude reference="o9W-hc-AP5"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=regular">
                                                     <mask key="constraints">
-                                                        <include reference="o9W-hc-AP5"/>
                                                         <include reference="Y4A-uy-1GO"/>
+                                                        <include reference="o9W-hc-AP5"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -934,12 +934,12 @@
                     </view>
                     <connections>
                         <outlet property="ResultLabel" destination="Lzf-PX-9FT" id="gho-Cg-fLd"/>
-                        <outlet property="operationsStackView" destination="E7o-Rc-6n0" id="KiB-H8-dax"/>
+                        <outlet property="set3OperationsStackView" destination="E7o-Rc-6n0" id="Qc0-o5-BcI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWv-5P-uKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2897" y="-1236"/>
+            <point key="canvasLocation" x="-2877" y="-1300"/>
         </scene>
     </scenes>
     <resources>
