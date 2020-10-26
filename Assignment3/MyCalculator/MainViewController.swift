@@ -24,6 +24,7 @@ class MainViewController: UIViewController
     var mathOperationPerformed: Bool = false; /* Returns true whenever math operator is pressed */
     var mathOperator: String = ""; /* To store math operators */
     var finalResult: String = "";
+    var randomDouble: Double = 0;
     
     override func viewDidLoad()
     {
@@ -48,6 +49,11 @@ class MainViewController: UIViewController
                         ResultLabel.text! = finalResult
                     }
                 }
+            case "Rand":
+                randomDouble = Double.random(in: 0.21828...9.14159)
+                ResultLabel.text! = String(randomDouble)
+            case "𝝅":
+                print("Pi clicked")
             case "C":
                 ResultLabel.text! = "0"
                 firstOperatorValue = 0
