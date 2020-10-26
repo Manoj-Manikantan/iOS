@@ -34,6 +34,20 @@ class MainViewController: UIViewController
     {
         switch sender.titleLabel!.text!
         {
+            case "√":
+                if((ResultLabel.text! != "0") && (ResultLabel.text! != ""))
+                {
+                    currentNumberValue = Double(ResultLabel.text!)!
+                    finalResult = String(currentNumberValue.squareRoot())
+                    if(finalResult.suffix(2) == ".0")
+                    {
+                        ResultLabel.text! = String(finalResult.prefix(finalResult.count-2))
+                    }
+                    else
+                    {
+                        ResultLabel.text! = finalResult
+                    }
+                }
             case "C":
                 ResultLabel.text! = "0"
                 firstOperatorValue = 0
