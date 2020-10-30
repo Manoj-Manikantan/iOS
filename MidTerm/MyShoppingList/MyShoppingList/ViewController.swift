@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
     @IBAction func addItemAction(_ sender: Any) {
         if (!itemName.text!.isEmpty)
         {
@@ -30,6 +29,15 @@ class ViewController: UIViewController {
             listItemTableView.reloadData()
         }
     }
+    
+    @IBAction func qtyValueChanged(_ sender: UIStepper) {
+        let buttonIndex = sender.tag
+        myList[buttonIndex].listQty = Int(sender.value)
+        listItemTableView.reloadData()
+    }
+    
+    
+    
     
 }
 
