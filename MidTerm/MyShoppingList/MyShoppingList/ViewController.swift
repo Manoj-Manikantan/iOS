@@ -17,8 +17,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func addItemAction(_ sender: Any) {
+        if (!itemName.text!.isEmpty)
+        {
+            var myListItem = myShoppingList()
+            myListItem.listItemName = itemName.text!
+            myListItem.listQty = 1
+            myList.append(myListItem)
+            listItemTableView.reloadData()
+        }
+    }
+    
 }
 
 
