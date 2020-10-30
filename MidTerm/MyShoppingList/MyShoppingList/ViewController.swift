@@ -36,9 +36,19 @@ class ViewController: UIViewController {
         listItemTableView.reloadData()
     }
     
+    @IBAction func cancelButton(_ sender: Any) {
+        myList = []
+        listItemTableView.reloadData()
+        itemName.text = ""
+    }
     
-    
-    
+}
+
+extension ViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 
