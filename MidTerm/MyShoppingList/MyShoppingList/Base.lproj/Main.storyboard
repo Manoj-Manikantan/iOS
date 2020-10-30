@@ -35,6 +35,9 @@
                                 <color key="textColor" red="0.21960784310000001" green="0.63529411759999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="yV2-Lx-dxs"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter New List Item" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsU-eB-pVl">
                                 <rect key="frame" x="25" y="202" width="149" height="21"/>
@@ -49,6 +52,9 @@
                                 <color key="textColor" red="0.21960784310000001" green="0.63529411759999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bjV-37-M3j"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1o9-Wr-E5o">
                                 <rect key="frame" x="324" y="233" width="65" height="30"/>
@@ -59,13 +65,6 @@
                                     <color key="titleColor" red="0.92549019610000005" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shopping Cart" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enE-oF-CF0">
-                                <rect key="frame" x="165" y="322" width="111" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List Items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJF-iO-Vea">
                                 <rect key="frame" x="33" y="363" width="74" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -109,16 +108,23 @@
                                                     <color key="textColor" red="0.21960784310000001" green="0.63529411759999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BYZ-38-t0r" id="il6-ix-552"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="labelQty" destination="d3w-Od-vEk" id="zjh-Fu-a0W"/>
-                                            <outlet property="stepperQty" destination="N5X-Sl-yWn" id="6jP-AE-5cC"/>
-                                            <outlet property="textFieldListItem" destination="4Q9-Af-zkQ" id="JcR-0o-QV9"/>
+                                            <outlet property="labelQty" destination="d3w-Od-vEk" id="Ul5-L8-33q"/>
+                                            <outlet property="stepperQty" destination="N5X-Sl-yWn" id="8O5-kX-6fW"/>
+                                            <outlet property="textFieldListItem" destination="4Q9-Af-zkQ" id="Jgs-Qo-8JV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="1TJ-QN-B7e"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eMw-il-FBn"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0g-M8-SHx">
                                 <rect key="frame" x="119" y="800" width="70" height="30"/>
@@ -138,14 +144,25 @@
                                     <color key="titleColor" red="0.92549019610000005" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shopping Cart" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enE-oF-CF0">
+                                <rect key="frame" x="152" y="316" width="111" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="itemName" destination="AMh-Hq-Z4s" id="UCR-2q-tHe"/>
+                        <outlet property="listItemTableView" destination="AdK-gj-25t" id="KY7-Zy-6ZN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="140"/>
+            <point key="canvasLocation" x="123" y="-509"/>
         </scene>
     </scenes>
 </document>
