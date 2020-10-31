@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var myList = [myShoppingList]()
+    var tableCell = ListItemCellTableViewCell()
     
     @IBOutlet weak var listItemTableView: UITableView!
     @IBOutlet weak var itemName: UITextField!
@@ -42,6 +43,23 @@ class ViewController: UIViewController {
         itemName.text = ""
     }
     
+    @IBAction func editItemName(_ sender: UIButton) {
+        if (sender.titleLabel!.text! == "Edit") {
+            print("edit called")
+//            print(tableCell.textFieldListItem.text!)
+//            tableCell.textFieldListItem.isEnabled = true
+//            tableCell.textFieldListItem.isUserInteractionEnabled = true
+//            sender.titleLabel!.text! = "Save"
+        }
+//        else if(sender.titleLabel!.text! == "Save"){
+//            let buttonIndex = sender.tag
+//            myList[buttonIndex].listItemName = "Manoj"
+//            tableCell.textFieldListItem.isEnabled = false
+//            tableCell.textFieldListItem.isUserInteractionEnabled = false
+//            sender.titleLabel!.text! = "Edit"
+//            listItemTableView.reloadData()
+//        }
+    }
 }
 
 extension ViewController: UITextFieldDelegate{
