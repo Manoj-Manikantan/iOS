@@ -1,10 +1,10 @@
-//
-//  ViewController.swift
-//  MyShoppingList
-//
+//  File Name : ViewController.swift
+//  Folder Name : MidTerm/MyShoppingList
+//  Author's Name : Manoj Manikantan Muralidharan
+//  Student ID : 301067347
+//  Date : 30th Oct 2020
 //  Created by Manoj on 2020-10-30.
 //  Copyright © 2020 Manoj. All rights reserved.
-//
 
 import UIKit
 
@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    /* To add an item to the shopping cart list items */
     @IBAction func addItemAction(_ sender: Any) {
         if (!itemName.text!.isEmpty)
         {
@@ -31,18 +32,27 @@ class ViewController: UIViewController {
         }
     }
     
+    /* To change the quantity */
     @IBAction func qtyValueChanged(_ sender: UIStepper) {
         let buttonIndex = sender.tag
         myList[buttonIndex].listQty = Int(sender.value)
         listItemTableView.reloadData()
     }
     
+    /* Resets the list */
     @IBAction func cancelButton(_ sender: Any) {
         myList = []
         listItemTableView.reloadData()
         itemName.text = ""
     }
     
+    /* Idea is to have an edit button inside the textfield
+     * 1. Disable the textfield to begin with and enable it upon clicking edit
+     * 2. Change the button name to Save and allow user to edit the item
+     * 3. Disable the textfield again after user enters the item and clicks save
+     * 4. The button is edit again which allows user to edit
+     * 5. Also update myList which stores the values
+     */
     @IBAction func editItemName(_ sender: UIButton) {
         if (sender.titleLabel!.text! == "Edit") {
             print("edit called")
@@ -62,6 +72,7 @@ class ViewController: UIViewController {
     }
 }
 
+/* To hide the keyboard when user hits return in textfields */
 extension ViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -69,7 +80,10 @@ extension ViewController: UITextFieldDelegate{
     }
 }
 
-
+/* Table View and its functions
+ * 1. To return the count
+ * 2. To load the cell one by one
+ */
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myList.count
