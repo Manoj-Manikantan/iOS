@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
     
     var myList = [myShoppingList]()
-    var tableCell = ListItemCellTableViewCell()
     
     @IBOutlet weak var listItemTableView: UITableView!
     @IBOutlet weak var itemName: UITextField!
@@ -54,21 +53,20 @@ class ViewController: UIViewController {
      * 5. Also update myList which stores the values
      */
     @IBAction func editItemName(_ sender: UIButton) {
+        let idx = IndexPath(row: sender.tag, section: 0)
+        let cell = listItemTableView.cellForRow(at: idx) as? ListItemCellTableViewCell
         if (sender.titleLabel!.text! == "Edit") {
             print("edit called")
-            //            print(tableCell.textFieldListItem.text!)
-            //            tableCell.textFieldListItem.isEnabled = true
-            //            tableCell.textFieldListItem.isUserInteractionEnabled = true
-            //            sender.titleLabel!.text! = "Save"
+            cell!.textFieldListItem.isUserInteractionEnabled = true
+            cell!.editButton.titleLabel!.text! = "Save"
         }
-        //        else if(sender.titleLabel!.text! == "Save"){
-        //            let buttonIndex = sender.tag
-        //            myList[buttonIndex].listItemName = "Manoj"
-        //            tableCell.textFieldListItem.isEnabled = false
-        //            tableCell.textFieldListItem.isUserInteractionEnabled = false
-        //            sender.titleLabel!.text! = "Edit"
-        //            listItemTableView.reloadData()
-        //        }
+        else if(sender.titleLabel!.text! == "Save"){
+            let buttonIndex = sender.tag
+            myList[buttonIndex].listItemName = "Manoj"
+            cell!.textFieldListItem.isUserInteractionEnabled = false
+            cell!.editButton.titleLabel!.text! = "Edit"
+        }
+        listItemTableView.reloadData()
     }
 }
 
@@ -94,6 +92,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         cell?.textFieldListItem.text = myList[indexPath.row].listItemName
         cell?.labelQty.text = String(myList[indexPath.row].listQty)
         cell?.stepperQty.tag = indexPath.row
+        
         return cell!
     }
 }
