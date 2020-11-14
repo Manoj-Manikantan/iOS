@@ -52,7 +52,7 @@ class ViewController: UIViewController {
      * 4. The button is edit again which allows user to edit
      * 5. Also update myList which stores the values
      */
-    @IBAction func editItemName(_ sender: UIButton) {
+    /* @IBAction func editItemName(_ sender: UIButton) {
         let idx = IndexPath(row: sender.tag, section: 0)
         let cell = listItemTableView.cellForRow(at: idx) as? ListItemCellTableViewCell
         if (sender.titleLabel!.text! == "Edit") {
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             cell!.editButton.titleLabel!.text! = "Edit"
         }
         listItemTableView.reloadData()
-    }
+    } */
 }
 
 /* To hide the keyboard when user hits return in textfields */
