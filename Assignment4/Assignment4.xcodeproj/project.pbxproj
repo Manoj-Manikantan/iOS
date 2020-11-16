@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF93355E25622F2800775F80 /* TaskInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF93355D25622F2800775F80 /* TaskInformationModel.swift */; };
 		AFB16E4E2560883D002BE3B0 /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16E4D2560883D002BE3B0 /* ListItemTableViewCell.swift */; };
 		AFB16E5025608A15002BE3B0 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16E4F25608A15002BE3B0 /* AddTaskViewController.swift */; };
 		AFD05E5A255E1BC800B8F3B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD05E59255E1BC800B8F3B2 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF93355D25622F2800775F80 /* TaskInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformationModel.swift; sourceTree = "<group>"; };
 		AFB16E4D2560883D002BE3B0 /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
 		AFB16E4F25608A15002BE3B0 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		AFD05E56255E1BC800B8F3B2 /* Assignment4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment4.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 				AFD05E5F255E1BC800B8F3B2 /* Main.storyboard */,
 				AFB16E4F25608A15002BE3B0 /* AddTaskViewController.swift */,
 				AFB16E4D2560883D002BE3B0 /* ListItemTableViewCell.swift */,
+				AF93355D25622F2800775F80 /* TaskInformationModel.swift */,
 				AFD05E65255E1BCA00B8F3B2 /* Assets.xcassets */,
 				AFD05E67255E1BCA00B8F3B2 /* LaunchScreen.storyboard */,
 				AFD05E6A255E1BCA00B8F3B2 /* Info.plist */,
@@ -270,6 +273,7 @@
 			files = (
 				AFB16E4E2560883D002BE3B0 /* ListItemTableViewCell.swift in Sources */,
 				AFB16E5025608A15002BE3B0 /* AddTaskViewController.swift in Sources */,
+				AF93355E25622F2800775F80 /* TaskInformationModel.swift in Sources */,
 				AFD05E5E255E1BC800B8F3B2 /* ViewController.swift in Sources */,
 				AFD05E64255E1BC800B8F3B2 /* Assignment4.xcdatamodeld in Sources */,
 				AFD05E5A255E1BC800B8F3B2 /* AppDelegate.swift in Sources */,
