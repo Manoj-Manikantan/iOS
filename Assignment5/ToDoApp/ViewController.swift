@@ -15,13 +15,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var listItemTableView: UITableView!
     
+    var myTask = [taskInformationDetails]()
+    @IBOutlet weak var listItemTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
 }
@@ -32,4 +31,30 @@ extension ViewController: UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
+}
+
+extension ViewController: UITableViewDataSource,UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return myTask.count
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = listItemTableView.dequeueReusableCell(withIdentifier: "itemCell") as? ListItemTableViewCell
+        cell?.taskName.text = "Task 1"
+        cell?.taskStatus.text = "Completed"
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
+        let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("Update action ...")
+            success(true)
+        })
+        modifyAction.backgroundColor = .blue
+        
+        return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+    
 }
