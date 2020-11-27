@@ -14,4 +14,16 @@ struct taskInformationDetails {
     var isCompleted = false;
     var hasDueDate = false;
     var dueDate = "";
+    var taskDocumentId = "";
+    var dictTaskDetails: [String: Any] {
+        return ["taskName": taskName,
+                "taskDescription": taskDescription,
+                "isCompleted": isCompleted,
+                "hasDueDate": hasDueDate,
+                "dueDate": dueDate,
+                "taskDocumentId":taskDocumentId]
+    }
+    var nsDictionary: NSDictionary {
+        return dictTaskDetails as NSDictionary
+    }
 }
