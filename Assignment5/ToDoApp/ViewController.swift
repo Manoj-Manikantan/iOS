@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTaskDetails()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,8 +51,6 @@ class ViewController: UIViewController {
     }
     
 }
-    
-
 
 /* To hide the keyboard when user hits return in textfields */
 extension ViewController: UITextFieldDelegate{
@@ -74,6 +71,7 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription
         if (myTaskDetailsList[indexPath.row].isCompleted) {
             cell?.taskSwitch.isOn = false
+            cell?.taskSwitch.isUserInteractionEnabled = false
         } else {
              cell?.taskSwitch.isOn = true
         }
@@ -83,11 +81,9 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
         let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            print("Update action ...")
             success(true)
         })
-        modifyAction.backgroundColor = .blue
-        
+        modifyAction.backgroundColor = .darkGray
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
     

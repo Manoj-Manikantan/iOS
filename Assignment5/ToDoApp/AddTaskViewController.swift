@@ -62,8 +62,6 @@ class AddTaskViewController: UIViewController {
         let newTaskDetail = firebaseDb.collection("TaskDetails").document()
         myTaskDetails.taskDocumentId = newTaskDetail.documentID
         newTaskDetail.setData(myTaskDetails.dictTaskDetails)
-        print(myTaskDetails)
-        print("Task details added")
     }
     
     
