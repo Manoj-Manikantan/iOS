@@ -45,7 +45,7 @@
                                             <color key="titleShadowColor" red="0.98039215690000003" green="0.23921568630000001" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="mMS-l8-lV5" kind="show" id="FH4-fm-jYi"/>
+                                            <segue destination="mMS-l8-lV5" kind="show" identifier="addDetailSegue" id="FH4-fm-jYi"/>
                                         </connections>
                                     </button>
                                 </subviews>

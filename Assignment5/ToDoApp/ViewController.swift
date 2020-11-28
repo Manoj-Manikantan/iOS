@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var myTaskDetailsList = [taskInformationDetails]()
     var myTaskDetails = taskInformationDetails()
     let firebaseDb = Firestore.firestore()
+    var selectedIndex = -1
     
     @IBOutlet weak var listItemTableView: UITableView!
     
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
     }
     
     func getTaskDetails(){
+        self.myTaskDetailsList = []
         firebaseDb.collection("TaskDetails").getDocuments { (myTasks, error) in
             if(error == nil && myTasks != nil){
                 for document in myTasks!.documents{
@@ -50,6 +52,13 @@ class ViewController: UIViewController {
         }
     }
     
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addDetailSegue" {
+            let detailController = segue.destination as? AddTaskViewController
+            detailController!.myTaskDetails = myTaskDetailsList[selectedIndex]
+        }
+    }
 }
 
 /* To hide the keyboard when user hits return in textfields */
@@ -80,11 +89,22 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
-        let modifyAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        
+        let updateAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.selectedIndex = indexPath.row
+            self.performSegue(withIdentifier: "addDetailSegue", sender: nil)
             success(true)
         })
-        modifyAction.backgroundColor = .darkGray
-        return UISwipeActionsConfiguration(actions: [modifyAction])
+//        updateAction.image = Update
+        updateAction.backgroundColor = .darkGray
+        
+        let deleteAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            success(true)
+        })
+//        updateAction.image = #imageLiteral(resourceName: <#T##String#>)
+        updateAction.backgroundColor = .darkGray
+        
+        return UISwipeActionsConfiguration(actions: [updateAction,deleteAction])
     }
-    
 }

@@ -22,6 +22,9 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !myTaskDetails.taskDocumentId.isEmpty {
+            print(myTaskDetails.taskDocumentId)
+        }
     }
     
     
