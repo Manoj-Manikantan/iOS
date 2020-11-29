@@ -46,13 +46,14 @@ class ViewController: UIViewController {
                     self.myTaskDetails.taskDocumentId = taskDoc["taskDocumentId"] as! String
                     self.myTaskDetailsList.append(self.myTaskDetails)
                 }
+                self.listItemTableView.reloadData()
                 DispatchQueue.main.async {
                     self.listItemTableView.reloadData()
                 }
             }
         }
     }
-        
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(selectedIndex != -1)
         {
@@ -64,12 +65,15 @@ class ViewController: UIViewController {
     }
 }
 
-/* To hide the keyboard when user hits return in textfields */
 extension ViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+}
+
+extension UIColor{
+    
 }
 
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
@@ -81,16 +85,27 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         let cell = listItemTableView.dequeueReusableCell(withIdentifier: "itemCell") as? ListItemTableViewCell
         cell?.taskName.text = myTaskDetailsList[indexPath.row].taskName
         if(!myTaskDetailsList[indexPath.row].dueDate.isEmpty){
-            cell?.taskStatus.text = myTaskDetailsList[indexPath.row].dueDate
+            let strDueDate = String(myTaskDetailsList[indexPath.row].dueDate.prefix(10))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            
+            cell?.taskStatus.text = String(myTaskDetailsList[indexPath.row].dueDate.prefix(10))
+            
+            if Date() > dateFormatter.date(from: strDueDate) ?? Date() {
+                cell?.taskStatus.textColor = .red
+            } else {
+                cell?.taskStatus.textColor = UIColor.init(displayP3Red: 0.2392, green: 0.4, blue: 0.9804, alpha: 1.0)
+            }
         }else{
-            cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription
+            cell?.taskStatus.text = "Completed"
+            /* cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription */
         }
         if (myTaskDetailsList[indexPath.row].isCompleted) {
             cell?.taskSwitch.isOn = false
             cell?.taskSwitch.isUserInteractionEnabled = false
             cell?.backgroundColor = .lightGray
         } else {
-             cell?.taskSwitch.isOn = true
+            cell?.taskSwitch.isOn = true
             cell?.backgroundColor = .white
         }
         return cell!
@@ -104,13 +119,13 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
             self.performSegue(withIdentifier: "addDetailSegue", sender: nil)
             success(true)
         })
-        updateAction.backgroundColor = .red
+        updateAction.backgroundColor = .darkGray
         
         let deleteAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             success(true)
         })
-        updateAction.backgroundColor = .darkGray
+        deleteAction.backgroundColor = .red
         
-        return UISwipeActionsConfiguration(actions: [updateAction,deleteAction])
+        return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
     }
 }

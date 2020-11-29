@@ -8,6 +8,7 @@
 
 //  Created by Manoj on 2020-11-26.
 //  Copyright © 2020 Manoj. All rights reserved.
+
 import UIKit
 import FirebaseFirestore
 
@@ -27,6 +28,7 @@ class AddTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (!myTaskDetails.taskDocumentId.isEmpty) {
+            btnSave.setTitle("Update", for: .normal)
             displayTaskDetails()
         }
     }   
@@ -61,7 +63,6 @@ class AddTaskViewController: UIViewController {
             dueDatePicker.setDate(from: myTaskDetails.dueDate, format: "MM/dd/yyyy HH:mm:ss", animated: true)
             dueDatePicker.isHidden = false
         }
-        btnSave.setTitle("Update", for: .normal)
     }
     
     @IBAction func saveTaskDetails(_ sender: UIButton) {
@@ -145,13 +146,19 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func resetTaskDetails(_ sender: Any) {
-        txtFldTaskName.text = ""
-        txtViewTaskDesc.text = ""
-        switchIsCompleted.isOn = false
-        switchDueDate.isOn = false
-        dueDatePicker.isHidden = true
+        let cancelAlert = UIAlertController(title: "Cancel Task", message: "Are you sure you want to discard the changes?", preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes, Rollback to initial values", style: .default, handler: { (action) -> Void in
+            self.displayTaskDetails()
+        })
+        
+        let noAction = UIAlertAction(title: "No, Continue Editing", style: .cancel) { (action) -> Void in
+            print("Continue editing")
+        }
+        cancelAlert.addAction(yesAction)
+        cancelAlert.addAction(noAction)
+        self.present(cancelAlert, animated: true, completion: nil)
     }
-    
 }
 
 extension UIDatePicker {
