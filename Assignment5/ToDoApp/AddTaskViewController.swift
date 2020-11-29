@@ -1,8 +1,13 @@
-//  AddTaskViewController.swift
-//  Assignment5
+//  ViewController.swift
+//  Assignment5 - Todo List
+//  Name - Manoj Manikantan Muralidharan
+//  Student ID - 301067347
+//  Date - 26th Nov 2020
+//  Description - Performs Add, Update and delete API calls
+//  Version 1.0
+
 //  Created by Manoj on 2020-11-26.
 //  Copyright © 2020 Manoj. All rights reserved.
-
 import UIKit
 import FirebaseFirestore
 
@@ -25,7 +30,6 @@ class AddTaskViewController: UIViewController {
             displayTaskDetails()
         }
     }
-    
     
     @IBAction func dueDateSwitchPressed(_ sender: UISwitch) {
         if(sender.isOn){

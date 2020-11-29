@@ -1,12 +1,13 @@
 //  ViewController.swift
-//  Assignment5 - Todo List
+//  Assignment5 - Todo List - Part 2
 //  Name - Manoj Manikantan Muralidharan
 //  Student ID - 301067347
 //  Date - 26th Nov 2020
-//  Description - Two create UI part of two screens of the ToDo App
-//  1st Screen will hold the list of tasks
-//  2nd Screen will allow the user to enter task details
-
+//  Description - Performs get API call and displays list of tasks
+//  Redirects user to add a new task on clicking the + button
+//  Also, lets the user to click on a particular task and redirect to the task information screen
+//  2nd Screen lets the user to add a new task and diplays particular task details screen
+//  Version 1.0
 
 //  Created by Manoj on 2020-11-26.
 //  Copyright © 2020 Manoj. All rights reserved.
