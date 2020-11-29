@@ -45,8 +45,6 @@ class ViewController: UIViewController {
                     self.myTaskDetails.dueDate = taskDoc["dueDate"] as! String
                     self.myTaskDetails.taskDocumentId = taskDoc["taskDocumentId"] as! String
                     self.myTaskDetailsList.append(self.myTaskDetails)
-                    print("Document")
-                    print(self.myTaskDetails)
                 }
                 DispatchQueue.main.async {
                     self.listItemTableView.reloadData()
