@@ -1,6 +1,5 @@
 //  AddTaskViewController.swift
 //  Assignment5
-
 //  Created by Manoj on 2020-11-26.
 //  Copyright © 2020 Manoj. All rights reserved.
 
@@ -22,8 +21,8 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !myTaskDetails.taskDocumentId.isEmpty {
-            print(myTaskDetails.taskDocumentId)
+        if (!myTaskDetails.taskDocumentId.isEmpty) {
+            displayTaskDetails()
         }
     }
     
@@ -34,6 +33,24 @@ class AddTaskViewController: UIViewController {
         }
         else{
             dueDatePicker.isHidden = true
+        }
+    }
+    
+    func displayTaskDetails(){
+        txtFldTaskName.text = myTaskDetails.taskName
+        txtViewTaskDesc.text = myTaskDetails.taskDescription
+        print("Is Completed")
+        print(myTaskDetails.isCompleted)
+        if(myTaskDetails.isCompleted){
+            switchIsCompleted.isOn = true
+        }
+        else{
+            switchIsCompleted.isOn = false
+        }
+        if(myTaskDetails.hasDueDate){
+            switchDueDate.isOn = true
+            dueDatePicker.setDate(from: myTaskDetails.dueDate, format: "MM/dd/yyyy HH:mm:ss", animated: true)
+            dueDatePicker.isHidden = false
         }
     }
     
@@ -48,16 +65,18 @@ class AddTaskViewController: UIViewController {
                        }
                        if(switchDueDate.isOn){
                            myTaskDetails.hasDueDate = true
-                           print(myTaskDetails.hasDueDate)
                            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
                            myTaskDetails.dueDate = dateFormatter.string(from: dueDatePicker.date)
-                           print(dateFormatter.string(from: dueDatePicker.date))
                        } else {
                            myTaskDetails.hasDueDate = false
                        }
                        addTaskDetails()
                 navigationController?.popViewController(animated: false)
-            }
+            } else {
+                let alert = UIAlertController(title: "Inputs missing", message: "Please enter Task name and Task Information to save a task", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func addTaskDetails() {
@@ -79,14 +98,14 @@ class AddTaskViewController: UIViewController {
         dueDatePicker.isHidden = true
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+}
+
+extension UIDatePicker {
+
+   func setDate(from string: String, format: String, animated: Bool = true) {
+      let formater = DateFormatter()
+      formater.dateFormat = format
+      let date = formater.date(from: string) ?? Date()
+      setDate(date, animated: animated)
+   }
 }

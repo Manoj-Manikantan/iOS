@@ -39,11 +39,13 @@ class ViewController: UIViewController {
                     let taskDoc = document.data()
                     self.myTaskDetails.taskName = taskDoc["taskName"] as! String
                     self.myTaskDetails.taskDescription = taskDoc["taskDescription"] as! String
-                    self.myTaskDetails.isCompleted = (taskDoc["isCompleted"] != nil)
-                    self.myTaskDetails.hasDueDate = (taskDoc["hasDueDate"] != nil)
+                    self.myTaskDetails.isCompleted = taskDoc["isCompleted"] as! Bool
+                    self.myTaskDetails.hasDueDate = taskDoc["hasDueDate"] as! Bool
                     self.myTaskDetails.dueDate = taskDoc["dueDate"] as! String
                     self.myTaskDetails.taskDocumentId = taskDoc["taskDocumentId"] as! String
                     self.myTaskDetailsList.append(self.myTaskDetails)
+                    print("Document")
+                    print(self.myTaskDetails)
                 }
                 DispatchQueue.main.async {
                     self.listItemTableView.reloadData()
@@ -51,12 +53,15 @@ class ViewController: UIViewController {
             }
         }
     }
-    
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addDetailSegue" {
-            let detailController = segue.destination as? AddTaskViewController
-            detailController!.myTaskDetails = myTaskDetailsList[selectedIndex]
+        if(selectedIndex != -1)
+        {
+            print(selectedIndex)
+            if segue.identifier == "addDetailSegue" {
+                let detailController = segue.destination as? AddTaskViewController
+                detailController!.myTaskDetails = myTaskDetailsList[selectedIndex]
+            }
         }
     }
 }
@@ -77,10 +82,16 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listItemTableView.dequeueReusableCell(withIdentifier: "itemCell") as? ListItemTableViewCell
         cell?.taskName.text = myTaskDetailsList[indexPath.row].taskName
+        if(!myTaskDetailsList[indexPath.row].dueDate.isEmpty){
+            cell?.taskStatus.text = myTaskDetailsList[indexPath.row].dueDate
+        }else{
+            cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription
+        }
         cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription
         if (myTaskDetailsList[indexPath.row].isCompleted) {
             cell?.taskSwitch.isOn = false
             cell?.taskSwitch.isUserInteractionEnabled = false
+            cell?.backgroundColor = .lightGray
         } else {
              cell?.taskSwitch.isOn = true
         }
