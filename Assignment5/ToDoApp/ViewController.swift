@@ -56,7 +56,6 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(selectedIndex != -1)
         {
-            print(selectedIndex)
             if segue.identifier == "addDetailSegue" {
                 let detailController = segue.destination as? AddTaskViewController
                 detailController!.myTaskDetails = myTaskDetailsList[selectedIndex]
@@ -86,13 +85,13 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         }else{
             cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription
         }
-        cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription
         if (myTaskDetailsList[indexPath.row].isCompleted) {
             cell?.taskSwitch.isOn = false
             cell?.taskSwitch.isUserInteractionEnabled = false
             cell?.backgroundColor = .lightGray
         } else {
              cell?.taskSwitch.isOn = true
+            cell?.backgroundColor = .white
         }
         return cell!
     }
@@ -105,14 +104,11 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
             self.performSegue(withIdentifier: "addDetailSegue", sender: nil)
             success(true)
         })
-//        updateAction.image = Update
-        updateAction.backgroundColor = .darkGray
+        updateAction.backgroundColor = .red
         
         let deleteAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            
             success(true)
         })
-//        updateAction.image = #imageLiteral(resourceName: <#T##String#>)
         updateAction.backgroundColor = .darkGray
         
         return UISwipeActionsConfiguration(actions: [updateAction,deleteAction])

@@ -31,6 +31,13 @@ class AddTaskViewController: UIViewController {
         }
     }   
     
+    @IBAction func isCompletedSwitchPressed(_ sender: UISwitch) {
+        if(sender.isOn){
+            switchDueDate.isOn = false
+            dueDatePicker.isHidden = true
+        }
+    }
+    
     @IBAction func dueDateSwitchPressed(_ sender: UISwitch) {
         if(sender.isOn){
             dueDatePicker.isHidden = false
@@ -43,8 +50,6 @@ class AddTaskViewController: UIViewController {
     func displayTaskDetails(){
         txtFldTaskName.text = myTaskDetails.taskName
         txtViewTaskDesc.text = myTaskDetails.taskDescription
-        print("Is Completed")
-        print(myTaskDetails.isCompleted)
         if(myTaskDetails.isCompleted){
             switchIsCompleted.isOn = true
         }
@@ -66,12 +71,14 @@ class AddTaskViewController: UIViewController {
         } else {
             let updateAlert = UIAlertController(title: "Update Task", message: "Are you sure you want to update this task?", preferredStyle: .alert)
             
-            let yesAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
+                print("Update entered")
+                self.checkTaskDetails()
                 self.updateTaskDetails()
                 self.navigationController?.popViewController(animated: false)
             })
             
-            let noAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            let noAction = UIAlertAction(title: "No", style: .cancel) { (action) -> Void in
                 print("Do not update")
             }
             updateAlert.addAction(yesAction)
@@ -81,12 +88,16 @@ class AddTaskViewController: UIViewController {
     }
     
     func addTaskDetails() {
+        checkTaskDetails()
         let newTaskDetail = firebaseDb.collection("TaskDetails").document()
         myTaskDetails.taskDocumentId = newTaskDetail.documentID
         newTaskDetail.setData(myTaskDetails.dictTaskDetails)
     }
     
     func updateTaskDetails(){
+        print("Update : Document Id")
+        print(myTaskDetails.taskDocumentId)
+        print(myTaskDetails.dictTaskDetails)
         firebaseDb.collection("TaskDetails").document(myTaskDetails.taskDocumentId).setData(myTaskDetails.dictTaskDetails)
     }
     
@@ -96,6 +107,10 @@ class AddTaskViewController: UIViewController {
             myTaskDetails.taskDescription = txtViewTaskDesc.text!
             if(switchIsCompleted.isOn){
                 myTaskDetails.isCompleted = true
+                switchDueDate.isOn = false
+                dueDatePicker.isHidden = true
+                myTaskDetails.hasDueDate = false
+                myTaskDetails.dueDate = ""
             } else {
                 myTaskDetails.isCompleted = false
             }
@@ -103,9 +118,6 @@ class AddTaskViewController: UIViewController {
                 myTaskDetails.hasDueDate = true
                 dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
                 myTaskDetails.dueDate = dateFormatter.string(from: dueDatePicker.date)
-            } else {
-                myTaskDetails.hasDueDate = false
-                myTaskDetails.dueDate = ""
             }
             navigationController?.popViewController(animated: false)
         } else {
@@ -118,12 +130,13 @@ class AddTaskViewController: UIViewController {
     @IBAction func deleteTaskDetails(_ sender: Any) {
         let deleteAlert = UIAlertController(title: "Delete Task", message: "Are you sure you want to delete this task?", preferredStyle: .alert)
         
-        let yesAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
+            print("Delete entered")
             self.firebaseDb.collection("TaskDetails").document(self.myTaskDetails.taskDocumentId).delete()
             self.navigationController?.popViewController(animated: false)
         })
         
-        let noAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+        let noAction = UIAlertAction(title: "No", style: .cancel) { (action) -> Void in
             print("Do not delete")
         }
         deleteAlert.addAction(yesAction)

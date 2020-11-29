@@ -179,6 +179,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c0Z-Ky-QVn" userLabel="isCompletedSwitch">
                                         <rect key="frame" x="294" y="18" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="isCompletedSwitchPressed:" destination="mMS-l8-lV5" eventType="valueChanged" id="Pla-x5-caj"/>
+                                        </connections>
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hmP-HI-Y7W" userLabel="hasDueDateSwitch">
                                         <rect key="frame" x="294" y="62" width="51" height="31"/>
