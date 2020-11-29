@@ -28,10 +28,11 @@ class AddTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (!myTaskDetails.taskDocumentId.isEmpty) {
+            print(myTaskDetails.taskDocumentId)
             btnSave.setTitle("Update", for: .normal)
             displayTaskDetails()
         }
-    }   
+    }
     
     @IBAction func isCompletedSwitchPressed(_ sender: UISwitch) {
         if(sender.isOn){
@@ -68,38 +69,24 @@ class AddTaskViewController: UIViewController {
     @IBAction func saveTaskDetails(_ sender: UIButton) {
         if (sender.titleLabel!.text! == "Save") {
             addTaskDetails()
-            navigationController?.popViewController(animated: false)
         } else {
-            let updateAlert = UIAlertController(title: "Update Task", message: "Are you sure you want to update this task?", preferredStyle: .alert)
+            let updateAlert = UIAlertController(title: "Update Task", message: "Are you sure you want to update this task?", preferredStyle: .actionSheet)
             
             let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
-                print("Update entered")
                 self.checkTaskDetails()
                 self.updateTaskDetails()
+                self.myTaskDetails.taskDocumentId = ""
                 self.navigationController?.popViewController(animated: false)
             })
             
             let noAction = UIAlertAction(title: "No", style: .cancel) { (action) -> Void in
                 print("Do not update")
             }
+            
             updateAlert.addAction(yesAction)
             updateAlert.addAction(noAction)
             self.present(updateAlert, animated: true, completion: nil)
         }
-    }
-    
-    func addTaskDetails() {
-        checkTaskDetails()
-        let newTaskDetail = firebaseDb.collection("TaskDetails").document()
-        myTaskDetails.taskDocumentId = newTaskDetail.documentID
-        newTaskDetail.setData(myTaskDetails.dictTaskDetails)
-    }
-    
-    func updateTaskDetails(){
-        print("Update : Document Id")
-        print(myTaskDetails.taskDocumentId)
-        print(myTaskDetails.dictTaskDetails)
-        firebaseDb.collection("TaskDetails").document(myTaskDetails.taskDocumentId).setData(myTaskDetails.dictTaskDetails)
     }
     
     func checkTaskDetails(){
@@ -120,7 +107,6 @@ class AddTaskViewController: UIViewController {
                 dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
                 myTaskDetails.dueDate = dateFormatter.string(from: dueDatePicker.date)
             }
-            navigationController?.popViewController(animated: false)
         } else {
             let alert = UIAlertController(title: "Inputs missing", message: "Please enter Task name and Task Information ", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -128,25 +114,39 @@ class AddTaskViewController: UIViewController {
         }
     }
     
+    func addTaskDetails() {
+        checkTaskDetails()
+        let newTaskDetail = firebaseDb.collection("TaskDetails").document()
+        myTaskDetails.taskDocumentId = newTaskDetail.documentID
+        newTaskDetail.setData(myTaskDetails.dictTaskDetails)
+        myTaskDetails.taskDocumentId = ""
+        navigationController?.popViewController(animated: false)
+    }
+    
+    func updateTaskDetails(){
+        firebaseDb.collection("TaskDetails").document(myTaskDetails.taskDocumentId).setData(myTaskDetails.dictTaskDetails)
+    }
+    
     @IBAction func deleteTaskDetails(_ sender: Any) {
-        let deleteAlert = UIAlertController(title: "Delete Task", message: "Are you sure you want to delete this task?", preferredStyle: .alert)
+        let deleteAlert = UIAlertController(title: "Delete Task", message: "Are you sure you want to delete this task?", preferredStyle: .actionSheet)
         
         let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
-            print("Delete entered")
             self.firebaseDb.collection("TaskDetails").document(self.myTaskDetails.taskDocumentId).delete()
+            self.myTaskDetails.taskDocumentId = ""
             self.navigationController?.popViewController(animated: false)
         })
         
         let noAction = UIAlertAction(title: "No", style: .cancel) { (action) -> Void in
             print("Do not delete")
         }
+        
         deleteAlert.addAction(yesAction)
         deleteAlert.addAction(noAction)
         self.present(deleteAlert, animated: true, completion: nil)
     }
     
     @IBAction func resetTaskDetails(_ sender: Any) {
-        let cancelAlert = UIAlertController(title: "Cancel Task", message: "Are you sure you want to discard the changes?", preferredStyle: .alert)
+        let cancelAlert = UIAlertController(title: "Cancel Task", message: "Are you sure you want to discard the changes?", preferredStyle: .actionSheet)
         
         let yesAction = UIAlertAction(title: "Yes, Rollback to initial values", style: .default, handler: { (action) -> Void in
             self.displayTaskDetails()

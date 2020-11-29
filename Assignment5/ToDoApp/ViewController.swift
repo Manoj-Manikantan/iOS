@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        selectedIndex = -1
         getTaskDetails()
     }
     
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(selectedIndex != -1)
         {
-            if segue.identifier == "addDetailSegue" {
+            if (segue.identifier == "addDetailSegue") {
                 let detailController = segue.destination as? AddTaskViewController
                 detailController!.myTaskDetails = myTaskDetailsList[selectedIndex]
             }
@@ -96,9 +97,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
             } else {
                 cell?.taskStatus.textColor = UIColor.init(displayP3Red: 0.2392, green: 0.4, blue: 0.9804, alpha: 1.0)
             }
-        }else{
-            cell?.taskStatus.text = "Completed"
-            /* cell?.taskStatus.text = myTaskDetailsList[indexPath.row].taskDescription */
         }
         if (myTaskDetailsList[indexPath.row].isCompleted) {
             cell?.taskSwitch.isOn = false
@@ -122,6 +120,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         updateAction.backgroundColor = .darkGray
         
         let deleteAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).delete()
+            self.getTaskDetails()
             success(true)
         })
         deleteAction.backgroundColor = .red
