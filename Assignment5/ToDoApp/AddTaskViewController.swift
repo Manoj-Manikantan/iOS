@@ -43,6 +43,7 @@ class AddTaskViewController: UIViewController {
     
     @IBAction func dueDateSwitchPressed(_ sender: UISwitch) {
         if(sender.isOn){
+            switchIsCompleted.isOn = false
             dueDatePicker.isHidden = false
         }
         else{

@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        selectedIndex = -1
         getTaskDetails()
     }
     
@@ -86,17 +85,25 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         let cell = listItemTableView.dequeueReusableCell(withIdentifier: "itemCell") as? ListItemTableViewCell
         cell?.taskName.text = myTaskDetailsList[indexPath.row].taskName
         if(!myTaskDetailsList[indexPath.row].dueDate.isEmpty){
-            let strDueDate = String(myTaskDetailsList[indexPath.row].dueDate.prefix(10))
+            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy"
             
-            cell?.taskStatus.text = String(myTaskDetailsList[indexPath.row].dueDate.prefix(10))
+            let strDueDate = String(myTaskDetailsList[indexPath.row].dueDate.prefix(10))
+            let currentDate = dateFormatter.string(from: Date())
+            let firstDate = dateFormatter.date(from:strDueDate)
+            let secondDate = dateFormatter.date(from: currentDate)
             
-            if Date() > dateFormatter.date(from: strDueDate) ?? Date() {
+            cell?.taskStatus.text = strDueDate
+            
+            if firstDate?.compare(secondDate!) == .orderedAscending{
                 cell?.taskStatus.textColor = .red
             } else {
                 cell?.taskStatus.textColor = UIColor.init(displayP3Red: 0.2392, green: 0.4, blue: 0.9804, alpha: 1.0)
             }
+        }else{
+            cell?.taskStatus.text = "Completed"
+            cell?.taskStatus.textColor = .green
         }
         if (myTaskDetailsList[indexPath.row].isCompleted) {
             cell?.taskSwitch.isOn = false
