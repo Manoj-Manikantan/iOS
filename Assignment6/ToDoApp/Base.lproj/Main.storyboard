@@ -91,26 +91,17 @@
                                                     <color key="textColor" red="0.23921568627450979" green="0.40000000000000002" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vut-60-g9e">
-                                                    <rect key="frame" x="287" y="6" width="51" height="31.5"/>
-                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Vut-60-g9e" firstAttribute="centerY" secondItem="dUe-G2-fia" secondAttribute="centerY" id="5oj-ts-kIO"/>
                                                 <constraint firstItem="QwM-qo-w1r" firstAttribute="top" secondItem="xB9-Cl-zNU" secondAttribute="bottom" constant="1" id="BCj-I1-fF0"/>
                                                 <constraint firstItem="xB9-Cl-zNU" firstAttribute="top" secondItem="dUe-G2-fia" secondAttribute="topMargin" constant="-11" id="Idn-yx-SuS"/>
-                                                <constraint firstItem="Vut-60-g9e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QwM-qo-w1r" secondAttribute="trailing" constant="8" symbolic="YES" id="VL2-pn-8aW"/>
                                                 <constraint firstItem="xB9-Cl-zNU" firstAttribute="leading" secondItem="dUe-G2-fia" secondAttribute="leadingMargin" constant="-4" id="VYs-QA-P9t"/>
-                                                <constraint firstItem="Vut-60-g9e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xB9-Cl-zNU" secondAttribute="trailing" constant="8" symbolic="YES" id="pVF-zW-Ycm"/>
-                                                <constraint firstItem="Vut-60-g9e" firstAttribute="top" secondItem="dUe-G2-fia" secondAttribute="topMargin" constant="-5" id="rzY-Zu-4gU"/>
-                                                <constraint firstItem="Vut-60-g9e" firstAttribute="trailing" secondItem="dUe-G2-fia" secondAttribute="trailingMargin" constant="-2" id="s9S-Ns-2a5"/>
                                                 <constraint firstItem="xB9-Cl-zNU" firstAttribute="leading" secondItem="QwM-qo-w1r" secondAttribute="leading" id="tMW-9K-OBX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="taskName" destination="xB9-Cl-zNU" id="mwh-gU-VPO"/>
                                             <outlet property="taskStatus" destination="QwM-qo-w1r" id="y8E-Sf-qzi"/>
-                                            <outlet property="taskSwitch" destination="Vut-60-g9e" id="hg1-S6-OQg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

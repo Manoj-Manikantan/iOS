@@ -116,23 +116,60 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         return cell!
     }
     
-    func tableView(_ tableView: UITableView,
-                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
-        
-        let updateAction = UIContextualAction(style: .normal, title:  "Update", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+    /* Edit Operation : Left to right -> Leading swipe */
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let updateAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.selectedIndex = indexPath.row
             self.performSegue(withIdentifier: "addDetailSegue", sender: nil)
             success(true)
         })
-        updateAction.backgroundColor = .darkGray
+        updateAction.backgroundColor = .blue
         
-        let deleteAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).delete()
-            self.getTaskDetails()
-            success(true)
-        })
+        return UISwipeActionsConfiguration(actions: [updateAction])
+    }
+    
+    /* Completed : Right to left -> Trailing Swipe */
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
+        
+//        let completedAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//            self.myTaskDetailsList[indexPath.row].isCompleted = true
+//            self.myTaskDetailsList[indexPath.row].hasDueDate = false
+//            self.myTaskDetailsList[indexPath.row].dueDate = ""
+//            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).setData(self.myTaskDetailsList[indexPath.row].dictTaskDetails)
+//            self.getTaskDetails()
+//            print("Completed")
+//            success(true)
+//        })
+//        completedAction.backgroundColor = .yellow
+        
+        let completedAction = UIContextualAction(style: .normal,
+                                         title: "") { (action, view, completionHandler) in
+                                            print("Completed")
+                                            
+        }
+        completedAction.backgroundColor = .yellow
+        
+        let deleteAction = UIContextualAction(style: .destructive,
+                                         title: "") { (action, view, completionHandler) in
+                                            print("Delete")
+        }
         deleteAction.backgroundColor = .red
         
-        return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
+//        let deleteAction = UIContextualAction(style: .destructive, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//            //            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).delete()
+//            //            self.getTaskDetails()
+//            print("Delete")
+//            success(true)
+//        })
+//        deleteAction.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, completedAction])
+        
+        
     }
+    
+    
+    
+    
 }
