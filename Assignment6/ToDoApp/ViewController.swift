@@ -106,19 +106,17 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
             cell?.taskStatus.textColor = .green
         }
         if (myTaskDetailsList[indexPath.row].isCompleted) {
-            cell?.taskSwitch.isOn = false
-            cell?.taskSwitch.isUserInteractionEnabled = false
             cell?.backgroundColor = .lightGray
         } else {
-            cell?.taskSwitch.isOn = true
             cell?.backgroundColor = .white
         }
+        
         return cell!
     }
     
     /* Edit Operation : Left to right -> Leading swipe */
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let updateAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let updateAction = UIContextualAction(style: .normal, title:  "Edit", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.selectedIndex = indexPath.row
             self.performSegue(withIdentifier: "addDetailSegue", sender: nil)
             success(true)
@@ -132,44 +130,27 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
         
-//        let completedAction = UIContextualAction(style: .normal, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-//            self.myTaskDetailsList[indexPath.row].isCompleted = true
-//            self.myTaskDetailsList[indexPath.row].hasDueDate = false
-//            self.myTaskDetailsList[indexPath.row].dueDate = ""
-//            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).setData(self.myTaskDetailsList[indexPath.row].dictTaskDetails)
-//            self.getTaskDetails()
-//            print("Completed")
-//            success(true)
-//        })
-//        completedAction.backgroundColor = .yellow
-        
-        let completedAction = UIContextualAction(style: .normal,
-                                         title: "") { (action, view, completionHandler) in
-                                            print("Completed")
-                                            
-        }
+        let completedAction = UIContextualAction(style: .normal, title:  "Completed", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.myTaskDetailsList[indexPath.row].isCompleted = true
+            self.myTaskDetailsList[indexPath.row].hasDueDate = false
+            self.myTaskDetailsList[indexPath.row].dueDate = ""
+            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).setData(self.myTaskDetailsList[indexPath.row].dictTaskDetails)
+            self.getTaskDetails()
+            print("Completed")
+            success(true)
+        })
         completedAction.backgroundColor = .yellow
         
-        let deleteAction = UIContextualAction(style: .destructive,
-                                         title: "") { (action, view, completionHandler) in
-                                            print("Delete")
-        }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).delete()
+            self.getTaskDetails()
+            print("Delete")
+            success(true)
+        })
         deleteAction.backgroundColor = .red
         
-//        let deleteAction = UIContextualAction(style: .destructive, title:  "", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-//            //            self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).delete()
-//            //            self.getTaskDetails()
-//            print("Delete")
-//            success(true)
-//        })
-//        deleteAction.backgroundColor = .red
-        
         return UISwipeActionsConfiguration(actions: [deleteAction, completedAction])
-        
-        
     }
-    
-    
-    
     
 }
