@@ -1,15 +1,13 @@
 //  ViewController.swift
-//  Assignment5 - Todo List - Part 2
+//  Assignment6 - Todo List - Part 3
 //  Name - Manoj Manikantan Muralidharan
 //  Student ID - 301067347
-//  Date - 26th Nov 2020
-//  Description - Performs get API call and displays list of tasks
-//  Redirects user to add a new task on clicking the + button
-//  Also, lets the user to click on a particular task and redirect to the task information screen
-//  2nd Screen lets the user to add a new task and diplays particular task details screen
-//  Version 1.0
-
-//  Created by Manoj on 2020-11-26.
+//  Date - 2nd Dec 2020
+//  Description - Gesture Control
+//  User swipes from left to right => Edit
+//  User swipes from right to left => Mark as Complete
+//  User long swipes from right to left => Delete
+//  Version 1.1
 //  Copyright © 2020 Manoj. All rights reserved.
 
 import UIKit
@@ -72,10 +70,6 @@ extension ViewController: UITextFieldDelegate{
     }
 }
 
-extension UIColor{
-    
-}
-
 extension ViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myTaskDetailsList.count
@@ -135,8 +129,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
             self.myTaskDetailsList[indexPath.row].hasDueDate = false
             self.myTaskDetailsList[indexPath.row].dueDate = ""
             self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).setData(self.myTaskDetailsList[indexPath.row].dictTaskDetails)
+            self.selectedIndex = -1
             self.getTaskDetails()
-            print("Completed")
             success(true)
         })
         completedAction.backgroundColor = .yellow
@@ -144,8 +138,8 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         
         let deleteAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.firebaseDb.collection("TaskDetails").document(self.myTaskDetailsList[indexPath.row].taskDocumentId).delete()
+            self.selectedIndex = -1
             self.getTaskDetails()
-            print("Delete")
             success(true)
         })
         deleteAction.backgroundColor = .red

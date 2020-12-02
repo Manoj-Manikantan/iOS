@@ -1,12 +1,13 @@
 //  ViewController.swift
-//  Assignment5 - Todo List
+//  Assignment6 - Todo List - Part 3
 //  Name - Manoj Manikantan Muralidharan
 //  Student ID - 301067347
-//  Date - 26th Nov 2020
-//  Description - Performs Add, Update and delete API calls
-//  Version 1.0
-
-//  Created by Manoj on 2020-11-26.
+//  Date - 2nd Dec 2020
+//  Description - Gesture Control
+//  User swipes from left to right => Edit
+//  User swipes from right to left => Mark as Complete
+//  User long swipes from right to left => Delete
+//  Version 1.1
 //  Copyright © 2020 Manoj. All rights reserved.
 
 import UIKit
