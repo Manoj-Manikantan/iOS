@@ -1,0 +1,6 @@
+framework module Pods_BMIApp_BMIAppUITests {
+  umbrella header "Pods-BMIApp-BMIAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
