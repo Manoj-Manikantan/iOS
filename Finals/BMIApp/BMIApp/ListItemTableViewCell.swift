@@ -15,5 +15,4 @@ class ListItemTableViewCell: UITableViewCell {
     @IBOutlet weak var lblBMI: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     
-    
 }
