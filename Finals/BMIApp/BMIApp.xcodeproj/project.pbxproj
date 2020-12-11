@@ -11,6 +11,8 @@
 		270CC7A552193E98BC93E17A /* Pods_BMIApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 980790EE9F2B4E0252B1DEB4 /* Pods_BMIApp.framework */; };
 		674A695A20F243ECAD38977B /* Pods_BMIApp_BMIAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546C0EB4568CFA1A75605425 /* Pods_BMIApp_BMIAppUITests.framework */; };
 		AF56B63F2583E51700C9EC84 /* EditInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56B63E2583E51700C9EC84 /* EditInformationViewController.swift */; };
+		AF56B64125840CB900C9EC84 /* BMIInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56B64025840CB900C9EC84 /* BMIInformationModel.swift */; };
+		AF56B6432584338C00C9EC84 /* BMICalculatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56B6422584338C00C9EC84 /* BMICalculatorHelper.swift */; };
 		AF9B734825805B7500E5FD8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B734725805B7500E5FD8E /* AppDelegate.swift */; };
 		AF9B734A25805B7500E5FD8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B734925805B7500E5FD8E /* SceneDelegate.swift */; };
 		AF9B734C25805B7500E5FD8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B734B25805B7500E5FD8E /* ViewController.swift */; };
@@ -22,7 +24,6 @@
 		AF9B736D25805B7800E5FD8E /* BMIAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9B736C25805B7800E5FD8E /* BMIAppUITests.swift */; };
 		AFE704F42582BD4900928739 /* TrackingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE704F32582BD4900928739 /* TrackingScreenViewController.swift */; };
 		AFE704F62582C14600928739 /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE704F52582C14600928739 /* ListItemTableViewCell.swift */; };
-		AFE704F82582DDB400928739 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE704F72582DDB400928739 /* ListModel.swift */; };
 		AFEAC8452581757100244AE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFEAC8442581757100244AE0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		7B85607D9E1A69287F3DA707 /* Pods-BMIAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMIAppTests.release.xcconfig"; path = "Target Support Files/Pods-BMIAppTests/Pods-BMIAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		980790EE9F2B4E0252B1DEB4 /* Pods_BMIApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BMIApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56B63E2583E51700C9EC84 /* EditInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInformationViewController.swift; sourceTree = "<group>"; };
+		AF56B64025840CB900C9EC84 /* BMIInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIInformationModel.swift; sourceTree = "<group>"; };
+		AF56B6422584338C00C9EC84 /* BMICalculatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculatorHelper.swift; sourceTree = "<group>"; };
 		AF9B734425805B7500E5FD8E /* BMIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9B734725805B7500E5FD8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF9B734925805B7500E5FD8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +73,6 @@
 		AF9B736E25805B7800E5FD8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFE704F32582BD4900928739 /* TrackingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScreenViewController.swift; sourceTree = "<group>"; };
 		AFE704F52582C14600928739 /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
-		AFE704F72582DDB400928739 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		AFEAC8442581757100244AE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F75EAE208D2AA10BA328173D /* Pods-BMIApp-BMIAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMIApp-BMIAppUITests.release.xcconfig"; path = "Target Support Files/Pods-BMIApp-BMIAppUITests/Pods-BMIApp-BMIAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,12 +147,13 @@
 				AF56B63E2583E51700C9EC84 /* EditInformationViewController.swift */,
 				AFE704F52582C14600928739 /* ListItemTableViewCell.swift */,
 				AF9B734D25805B7500E5FD8E /* Main.storyboard */,
+				AF56B64025840CB900C9EC84 /* BMIInformationModel.swift */,
 				AF9B735325805B7800E5FD8E /* Assets.xcassets */,
 				AF9B735525805B7800E5FD8E /* LaunchScreen.storyboard */,
 				AF9B735825805B7800E5FD8E /* Info.plist */,
 				AFEAC8442581757100244AE0 /* GoogleService-Info.plist */,
 				AF9B735025805B7500E5FD8E /* BMIApp.xcdatamodeld */,
-				AFE704F72582DDB400928739 /* ListModel.swift */,
+				AF56B6422584338C00C9EC84 /* BMICalculatorHelper.swift */,
 			);
 			path = BMIApp;
 			sourceTree = "<group>";
@@ -428,11 +431,12 @@
 			files = (
 				AF9B735225805B7500E5FD8E /* BMIApp.xcdatamodeld in Sources */,
 				AF56B63F2583E51700C9EC84 /* EditInformationViewController.swift in Sources */,
+				AF56B6432584338C00C9EC84 /* BMICalculatorHelper.swift in Sources */,
 				AF9B734C25805B7500E5FD8E /* ViewController.swift in Sources */,
 				AFE704F62582C14600928739 /* ListItemTableViewCell.swift in Sources */,
 				AFE704F42582BD4900928739 /* TrackingScreenViewController.swift in Sources */,
-				AFE704F82582DDB400928739 /* ListModel.swift in Sources */,
 				AF9B734825805B7500E5FD8E /* AppDelegate.swift in Sources */,
+				AF56B64125840CB900C9EC84 /* BMIInformationModel.swift in Sources */,
 				AF9B734A25805B7500E5FD8E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

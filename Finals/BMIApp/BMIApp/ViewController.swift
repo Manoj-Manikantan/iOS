@@ -1,15 +1,13 @@
-//
 //  ViewController.swift
 //  BMIApp
 //
 //  Created by Manoj on 2020-12-08.
 //  Copyright © 2020 Manoj. All rights reserved.
-//
 
 import UIKit
+import FirebaseFirestore
 
 class ViewController: UIViewController {
-    
     
     @IBOutlet weak var txtFldName: UITextField!
     @IBOutlet weak var txtFldAge: UITextField!
@@ -22,9 +20,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var metricSegmentedControl: UISegmentedControl!
     @IBOutlet var bmiInfoView: UIView!
     @IBOutlet weak var bgView: UIView!
-    var genderVal = "Male"
     
+    let bmiCalObj = BMICalculatorHelper()
+    var myBmiDetails = bmiInformationDetails()
+    let firebaseDb = Firestore.firestore()
+    
+    var genderVal = "Male"
+    var bmiScale = "Metric"
     var pickGender = ["Male", "Female"]
+    var bmiVal: Float = 0
+    var bmiCat = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +37,10 @@ class ViewController: UIViewController {
     
     @IBAction func MetricSegmentClicked(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
+            bmiScale = "Imperial"
             setStaticTexts(metric: false)
-        }
-        else {
+        } else {
+            bmiScale = "Metric"
             setStaticTexts(metric: true)
         }
     }
@@ -65,25 +71,50 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnCalculate(_ sender: Any) {
-        if ((txtFldName.text != "") && (txtFldAge.text != "") && (txtFldHeight.text != "") && (txtFldWeight.text != "") ) {
+        if (inputCheck()){
+            let heightVal = Float(txtFldHeight.text!)!
+            let weightVal = Float(txtFldWeight.text!)!
             
-        } else {
-            let alert = UIAlertController(title: "Inputs missing", message: "Please enter all the information to calculate the BMI ", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            bmiVal = bmiCalObj.bmiValueCalc(bmiScale: bmiScale, bmiHeight: heightVal, bmiWeight: weightVal)
+            bmiVal = (bmiVal*100).rounded()/100
+            bmiCat = bmiCategoryCalc(bmiVal: bmiVal)
+            lblBMIResult.text = "Your BMI is " + String(bmiVal) + " \nBMI Category : " + bmiCat
         }
-        
     }
     
-    func bmiValueCalc(bmiScale: String, bmiHeight: Float, bmiWeight: Float) -> Float{
-        switch  bmiScale{
-        case "Metric":
-            return((bmiWeight)/((bmiHeight/100) * (bmiHeight/100)))
-        case "Imperial":
-            return((bmiWeight * 703)/(bmiHeight * bmiHeight))
-        default:
-            return 0
+    @IBAction func btnDone(_ sender: Any) {
+        if(inputCheck()){
+            let dt = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            let strDate = formatter.string(from: dt)
+            let newTaskDetail = firebaseDb.collection("bmiApp").document()
+            
+            myBmiDetails.userName = txtFldName.text!
+            myBmiDetails.userAge = (txtFldAge.text! as NSString).integerValue
+            myBmiDetails.userGender = genderVal
+            myBmiDetails.bmiScale = bmiScale
+            myBmiDetails.bmiHeight = (txtFldHeight.text! as NSString).floatValue
+            myBmiDetails.bmiWeight = (txtFldWeight.text! as NSString).floatValue
+            myBmiDetails.bmiVal = bmiVal
+            myBmiDetails.bmiCat = bmiCat
+            myBmiDetails.date = strDate
+            myBmiDetails.DocumentId = newTaskDetail.documentID
+            
+            /* Add a record */
+            newTaskDetail.setData(myBmiDetails.dictBmiDetails)
+            performSegue(withIdentifier: "addBmiRecord", sender: nil)
         }
+    }
+    
+    func inputCheck() -> Bool{
+        if ((txtFldName.text != "") && (txtFldAge.text != "") && (txtFldHeight.text != "") && (txtFldWeight.text != "") ) {
+            return true
+        }
+        let alert = UIAlertController(title: "Inputs missing", message: "Please enter all the information to calculate the BMI ", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        return false
     }
     
     func bmiCategoryCalc(bmiVal: Float) -> String{
@@ -138,9 +169,6 @@ extension ViewController: UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
-    
-    
-    
 }
 
 
