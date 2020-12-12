@@ -77,17 +77,14 @@ class ViewController: UIViewController {
             
             bmiVal = bmiCalObj.bmiValueCalc(bmiScale: bmiScale, bmiHeight: heightVal, bmiWeight: weightVal)
             bmiVal = (bmiVal*100).rounded()/100
-            bmiCat = bmiCategoryCalc(bmiVal: bmiVal)
+            bmiCat = bmiCalObj.bmiCategoryCalc(bmiVal: bmiVal)
             lblBMIResult.text = "Your BMI is " + String(bmiVal) + " \nBMI Category : " + bmiCat
         }
     }
     
     @IBAction func btnDone(_ sender: Any) {
         if(inputCheck()){
-            let dt = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            let strDate = formatter.string(from: dt)
+            
             let newTaskDetail = firebaseDb.collection("bmiApp").document()
             
             myBmiDetails.userName = txtFldName.text!
@@ -98,11 +95,14 @@ class ViewController: UIViewController {
             myBmiDetails.bmiWeight = (txtFldWeight.text! as NSString).floatValue
             myBmiDetails.bmiVal = bmiVal
             myBmiDetails.bmiCat = bmiCat
-            myBmiDetails.date = strDate
+            myBmiDetails.date = bmiCalObj.getCurrentDate()
             myBmiDetails.DocumentId = newTaskDetail.documentID
-            
+        
             /* Add a record */
             newTaskDetail.setData(myBmiDetails.dictBmiDetails)
+            txtFldHeight.text = ""
+            txtFldWeight.text = ""
+            lblBMIResult.text = ""
             performSegue(withIdentifier: "addBmiRecord", sender: nil)
         }
     }
@@ -115,29 +115,6 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         return false
-    }
-    
-    func bmiCategoryCalc(bmiVal: Float) -> String{
-        switch bmiVal {
-        case ..<16:
-            return "Severe Thinness"
-        case 16...17:
-            return "Moderate Thinness"
-        case 17...18.5:
-            return "Mild Thinness"
-        case 18.5...25:
-            return "Normal"
-        case 25...30:
-            return "Overweight"
-        case 30...35:
-            return "Obese Class I"
-        case 35...40:
-            return "Obese Class II"
-        case 40...:
-            return "Obese Class III"
-        default:
-            return "Index out of range"
-        }
     }
 }
 

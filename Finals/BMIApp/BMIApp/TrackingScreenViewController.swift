@@ -49,6 +49,9 @@ class TrackingScreenViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.TableViewBMI.reloadData()
                 }
+                if(self.listItems.count == 0){
+                    self.navigationController?.popViewController(animated: false)
+                }
             }
         }
     }
@@ -69,8 +72,8 @@ extension TrackingScreenViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as? ListItemTableViewCell
-        cell?.lblWeight.text = "\(listItems[indexPath.row].bmiWeight)"
-        cell?.lblBMI.text = "\(listItems[indexPath.row].bmiVal)"
+        cell?.lblWeight.text = "Weight : " + "\(listItems[indexPath.row].bmiWeight)" + ((listItems[indexPath.row].bmiScale == "Metric") ? " kgs" : " lbs")
+        cell?.lblBMI.text = "BMI : " + "\(listItems[indexPath.row].bmiVal)"
         cell?.lblDate.text = "\(listItems[indexPath.row].date)"
         return cell!
     }

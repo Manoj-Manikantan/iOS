@@ -503,7 +503,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your Weight here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWd-OM-Bb6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your weight here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWd-OM-Bb6">
                                         <rect key="frame" x="8" y="36" width="300" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.46666666670000001" green="0.35294117650000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -547,6 +547,9 @@
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelAction:" destination="cWf-Ia-QYF" eventType="touchUpInside" id="gwI-2v-udY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32E-ka-KZB">
                                 <rect key="frame" x="49" y="435" width="137" height="65"/>
@@ -593,6 +596,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="idT-gr-lr5"/>
                     <connections>
+                        <outlet property="lblWeightMetric" destination="Euk-y8-Uwm" id="jrb-P5-YMe"/>
                         <outlet property="weightField" destination="P89-dN-jg0" id="ozr-ms-ibP"/>
                     </connections>
                 </viewController>
