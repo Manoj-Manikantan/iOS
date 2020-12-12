@@ -1,8 +1,10 @@
 //  ViewController.swift
 //  BMIApp
-//
 //  Created by Manoj on 2020-12-08.
 //  Copyright © 2020 Manoj. All rights reserved.
+//  Name : Manoj Manikantan Muralidharan
+//  Student ID : 301067347
+//  Date : 11th Dec 2020
 
 import UIKit
 import FirebaseFirestore

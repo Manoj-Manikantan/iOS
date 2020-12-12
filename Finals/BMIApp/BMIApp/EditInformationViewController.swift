@@ -1,8 +1,10 @@
 //  EditInformationViewController.swift
 //  BMIApp
-
 //  Created by Manoj on 2020-12-11.
 //  Copyright © 2020 Manoj. All rights reserved.
+//  Name : Manoj Manikantan Muralidharan
+//  Student ID : 301067347
+//  Date : 11th Dec 2020
 
 import Foundation
 import UIKit
